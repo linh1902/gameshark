@@ -1,0 +1,47 @@
+body {
+    background-color: #979AE2;
+    margin: 0px;
+}
+
+#entete {
+    display: flex;
+    justify-content: center;
+    height: 30%;
+    align-items: center;
+}
+
+#title_inscrip {
+    font-weight: bold;
+    color: white;
+    font-size: 70px;
+}
+
+#inscription {
+    display: flex;
+    justify-content: center;
+    background-color: #4E2746;
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+    border-radius: 30px;
+    padding-bottom: 40px;
+    padding-top: 30px;
+}
+
+.text {
+    color: white;
+    font-size: 30px;
+}
+
+.input {
+    width: 300px;
+    height: 30px;
+    border: none;
+    padding-left: 8px;
+    margin-top: 10px;
+    display: block;
+}
+
+#send {
+    margin-left: 100px;
+}

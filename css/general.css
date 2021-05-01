@@ -1,0 +1,18 @@
+.button {
+    background-color: #DA865B;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #B04E55;
+}
+
+#logo {
+    max-width: 7%;
+    height: auto;
+    justify-content: center;
+}

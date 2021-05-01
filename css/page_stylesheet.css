@@ -1,0 +1,96 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0px;
+    /* evite la superposition du footer*/
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+
+/*banner top */
+
+#entete {
+    height: 17%;
+    background-color: #4E2746;
+}
+
+#titre_banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#title {
+    color: #979AE2;
+    font-size: 75px;
+}
+
+#menu {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+li {
+    margin-bottom: -16px;
+    padding: 20px;
+    padding-left: auto;
+}
+
+.titre_menu {
+    font-size: 40px;
+    color: white;
+    text-decoration: none;
+}
+
+li:hover {
+    background-color: #979AE2;
+}
+
+
+/* Corps de la page*/
+
+#corps {
+    height: 60%;
+    flex: 1;
+}
+
+.texte_body {
+    font-weight: bold;
+    font-size: 60px;
+}
+
+
+/* Pied de page */
+
+footer {
+    width: 100%;
+    background-color: #979AE2;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+}
+
+.titleFooter {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.texte_footer {
+    color: white;
+    margin: 5px;
+    font-size: 20px;
+}
+
+.contact {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}

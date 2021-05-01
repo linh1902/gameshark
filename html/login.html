@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>gameshark_login</title>
+    <link rel="stylesheet" href="../css/login_stylesheet.css">
+    <link rel="stylesheet" href="../css/general.css">
+</head>
+
+<body>
+    <header id="entete">
+        <img src="../image/logo_gameshark.PNG" alt="logo_gameshark" id="logo">
+        <h1 id="title">GAMESHARK</h1>
+    </header>
+    <div id="login">
+        <!-- zone de connexion -->
+
+        <form action="../php/verif.php" method="POST">
+            <h2 id="title_login">Login</h2>
+
+            <label class="text">Mail</label>
+            <br>
+            <input type="text" placeholder="Entrer le mail" name="mail" class="input" required>
+            <br>
+
+            <label class="text">Mot de passe</label>
+            <br>
+            <input type="password" placeholder="Entrer le mot de passe" name="password" class="input" required>
+            <br>
+            <a href="inscription.html">
+                <input type="button" class="button" value="S'inscrire">
+            </a>
+
+            <input type="submit" id="send" class="button" value="Connection">
+        </form>
+    </div>
+</body>
+
+</html>

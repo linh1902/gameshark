@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/general.css">
+</head>
+
+<body>
+    <div>
+        <h1> Ajout d'un jeu </h1>
+    </div>
+    <div>
+        <form action="../php/add_game.php" method="POST">
+
+            <label class="text">Nom du jeux</label>
+            <input type="text" placeholder="Entrer le nom du jeux" name="nom" class="input" required>
+
+            <fieldset>
+                <legend>Plateforme</legend>
+                <input type="radio" name="plateforme" value="1" class="input" checked>PS4
+                <input type="radio" name="plateforme" value="2" class="input">Xbox One
+                <input type="radio" name="plateforme" value="3" class="input">Switch
+                <input type="radio" name="plateforme" value="4" class="input">PS5
+            </fieldset>
+            <label class="text">Date de sortie/label>
+            <input type="date" placeholder="date de sortie" name="release" class="input" >
+
+            <label class="text">Prix</label>
+            <input type="number" placeholder="Entrer votre prix" name="price" class="input" step="any" required>
+
+            <fieldset>
+                <legend>Etat</legend>
+                <input type="radio" name="state" value="1" class="input" checked>Neuf
+                <input type="radio" name="state" value="2" class="input">Occasion
+
+            </fieldset>
+
+            <label class="text">quantite</label>
+            <input type="number" placeholder="Entrer la quantite" name="qte" class="input" min="1" max="100" required>
+
+            <input type="submit" id="send" class="button" value="Ajouter">
+
+
+        </form>
+    </div>
+</body>
+
+</html>

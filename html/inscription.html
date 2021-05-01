@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>inscription_gameshark</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/inscription_stylesheet.css">
+</head>
+
+<body>
+    <header id="entete">
+        <img src="../image/logo_gameshark.PNG" alt="logo_gameshark" id="logo">
+        <h2 id="title_inscrip">Inscription</h2>
+    </header>
+    <div id="inscription">
+        <form action="../php/add_user.php" method="post">
+
+            <label class="text">Nom</label>
+            <input type="text" placeholder="Entrer le nom" name="nom" class="input" required>
+
+            <label class="text">Prenom</label>
+            <input type="text" placeholder="Entrer le prenom" name="prenom" class="input" required>
+
+            <label class="text">Date de naissance</label>
+            <input type="date" placeholder="Entrer la date de naissance" name="birthdate" class="input" required>
+
+            <label class="text">Email</label>
+            <input type="text" placeholder="Entrer votre email" name="mail" class="input" required>
+
+            <label class="text">Telephone</label>
+            <input type="tel" placeholder="Entrer numero de telephone" name="numberPhone" class="input" required>
+
+            <label class="text">Mot de passe</label>
+            <input type="password" placeholder="Entrer votre mot de passe" name="password" class="input" required>
+
+            <label class="text">Comfirmation de mot de passe</label>
+            <input type="password" placeholder="Entrer votre mot de passe " name="comfirPwd" class="input" required>
+
+            <input type="submit" id="send" class="button" value="Envoyer">
+        </form>
+    </div>
+
+
+</body>
+
+</html>
