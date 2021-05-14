@@ -1,8 +1,15 @@
+<?php
+  
+  include_once "../config/connexion_7_2020.php";
+  $SQL_SELECT_PLATFORM = " SELECT * FROM platform";
+  $EXE_SQL_SELECT_PLATFORM =  mysqli_query($db,$SQL_SELECT_PLATFORM);
+
+?>
+
+
+
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
 <html>
 
 <head>
@@ -10,33 +17,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/login_stylesheet.css">
 </head>
 
 <body>
     <div>
-        <h1> Ajout d'un jeu </h1>
+        <h1 id="title2"> Ajout d'un jeu </h1>
     </div>
     <div>
         <form action="../php/add_game.php" method="POST">
 
             <label class="text">Nom du jeux</label>
             <input type="text" placeholder="Entrer le nom du jeux" name="nom" class="input" required>
-
+            <labe class="text">Image jaquette</labe>
+            <input type="file" name="img" class="input" accept=".jpg, .jpeg, .png" multiple>
             <fieldset>
-                <legend>Plateforme</legend>
-                <input type="radio" name="plateforme" value="1" class="input" checked>PS4
-                <input type="radio" name="plateforme" value="2" class="input">Xbox One
-                <input type="radio" name="plateforme" value="3" class="input">Switch
-                <input type="radio" name="plateforme" value="4" class="input">PS5
+                <legend class="text">Plateforme</legend>
+                <?php
+                while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_PLATFORM))
+                {
+                    print "<input type='radio' name='plateforme' value=".$donnee['id_platform']." class='input' checked> ".$donnee['platform_name']."";
+                } ?>
+                
             </fieldset>
-            <label class="text">Date de sortie/label>
-            <input type="date" placeholder="date de sortie" name="release" class="input" >
+            <label class="text">Date de sortie</label>
+            <input type="date" placeholder="date de sortie" name="release" class="input">
 
             <label class="text">Prix</label>
             <input type="number" placeholder="Entrer votre prix" name="price" class="input" step="any" required>
 
             <fieldset>
-                <legend>Etat</legend>
+                <legend class="text">Etat</legend>
                 <input type="radio" name="state" value="1" class="input" checked>Neuf
                 <input type="radio" name="state" value="2" class="input">Occasion
 
