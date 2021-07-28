@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if(isset($_POST['mail']) && isset($_POST['password'])){
  
@@ -18,21 +19,25 @@ $reponse = mysqli_fetch_array($exe_SQL_SELECT_COUNT);
     if($mail !== "" && $password !== "")
     {
 
-    $SQL_SELECT_ROLE = " SELECT role FROM `users` WHERE mail ='".$mail."' AND password = '".$password."';";
+    $SQL_SELECT_ROLE = " SELECT id_users, role, user_name, surnameFROM `users` WHERE mail ='".$mail."' AND password = '".$password."';";
      $exe_SQL_SELECT_ROLE=  mysqli_query($db,$SQL_SELECT_ROLE);
      $reponse = mysqli_fetch_array($exe_SQL_SELECT_ROLE);
      //$reponse.length;
      $role= $reponse['role'];
          if($role==1){ 
-
-            echo $role;
-             header('location: http://localhost/gameshark/html/page_accueil_admin.php');
+            
+            // Storing session data
+            $_SESSION["firstname"] = $reponse['surname'];
+            $_SESSION["lastname"] = $reponse['user_name'];
+             header('location: http://localhost/gameshark/php/page_accueil_admin.php');
       
         }
         if($role==2){
-
-            echo $role;
-            header('location: http://localhost/gameshark/php/page_client.php');
+             // Storing session data
+             $_SESSION["firstname"] = $reponse['surname'];
+             $_SESSION["lastname"] = $reponse['user_name'];
+             $_SESSION["id_client"] = $reponse ['id_users'];
+            header('location: http://localhost/gameshark/php/client/page_accueil_client.php');
         
         }
         

@@ -22,7 +22,7 @@ if($password == $comfirmPwd){
     }
     else {
         $formatted_birthdate = date_format(new DateTime($birthdate), 'Y-m-d');
-        $SQL_ADDUSER = "INSERT INTO users(name, surname, birth_date, mail, phone_number, password, role) VALUES ('".$nom."','".$prenom."','".$formatted_birthdate."','".$mail."','".$numPhone."','".$password."','".$role."');";
+        $SQL_ADDUSER = "INSERT INTO users(user_name, surname, birth_date, mail, phone_number, password, role) VALUES ('".$nom."','".$prenom."','".$formatted_birthdate."','".$mail."','".$numPhone."','".$password."','".$role."');";
         mysqli_query($db, $SQL_ADDUSER);
         echo "bienvenue vous etre parmi nous";
     }

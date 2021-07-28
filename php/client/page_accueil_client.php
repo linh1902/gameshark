@@ -1,6 +1,6 @@
 <?php 
 session_start();
- 
+
 if(!$_SESSION) {
     // Si la session n'est pas ouverte ...
     echo "probleme de session veuillez vous reconnecter";
@@ -15,7 +15,7 @@ else {
 <!DOCTYPE html>
 <html>
 <?php 
-    include_once "../html/header.html";
+    include_once "../html/header_client.html";
     include_once  "../config/connexion_7_2020.php";
 ?>
 <body>

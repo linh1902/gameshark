@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <?php
     include_once "../config/connexion_7_2020.php";
-    include_once "../html/header.html";
+    include_once "../html/header_client.html";
  
 ?>
 
@@ -50,8 +50,9 @@
                    <th>date de sortie</th> 
                    <th>Prix (en euros)</th>
                    <th>Etat</th>
-                   <th>Quantité</th>
-                   <th></th>
+                   <th>Quantité restant</th>
+
+                   <th>Quantité désiré</th>
                    <th></th>
                 </tr>
                 <?php
@@ -59,7 +60,7 @@
                 while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_GAME)) 
                 {
                 ?>
-                    <form action="modif.php" method="post">
+                    <form action="../client/add_reservation" method="post">
                     <tr>
                         <td>
                         <input type="hidden" name="id_game" value=<?php echo $donnee['id_game'];?> >
@@ -79,7 +80,7 @@
                         }
                             ?></td>
                         <td>
-                            <input type="number" name="price" step="any" value=<?php echo $donnee['price']?>> 
+                            <input type="text" name="price" step="any" value=<?php echo $donnee['price']?>> 
                          </td>
                         <td><?php if($donnee['state']==1){
                             echo "neuf";
@@ -88,7 +89,8 @@
                             echo "occasion";
                         }
                          ?></td>
-                        <td><input type="number" name="quantity" value=<?php echo  $donnee['quantity']; ?> ></td>
+                        <td><input type="text" name="quantity" value=<?php echo  $donnee['quantity']; ?> ></td>
+                        <td><input type ="number" name="qteDes" value ="0"></td>
                         <td> <input class="button"type="submit" name="modifier" value="modifier"></td>
                         <td> <input class="button" type="submit" name="supprimer"  value="supprimer"></td>
                     </tr>
