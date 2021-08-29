@@ -30,7 +30,7 @@
             <label class="text">Nom du jeux</label>
             <input type="text" placeholder="Entrer le nom du jeux" name="nom" class="input" required>
             <label class="text">Image jaquette</label>
-            <input type="file" name="img" class="input" accept=".jpg, .jpeg, .png" multiple>
+            <input type="file" name="img" class="input" accept=".jpg, .jpeg, .png" multiple required>
             <fieldset>
                 <legend class="text">Plateforme</legend>
                 <?php

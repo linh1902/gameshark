@@ -1,0 +1,34 @@
+table {
+    width: 100%;
+}
+
+.entete_tableau {
+    font-size: 25px;
+    padding: 30px;
+}
+
+.element_tableau {
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+}
+
+#ajouter {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add {
+    background-color: #169eec;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 60px;
+    margin: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.add:hover {
+    background-color: #285375;
+}

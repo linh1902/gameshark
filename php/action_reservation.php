@@ -3,6 +3,7 @@
 // Start the session
 session_start();
 
+
 include_once "../config/connexion_7_2020.php";
 
 $donneeID=$_POST['id_reservation'];
@@ -15,16 +16,26 @@ $state = $_POST['id_state'];
 
 if (isset($_POST['ready'])) {
     
-    if ($state==2) {
+    if($state==2) {
         
-        echo "reservation deja prête veuillez patienter la recuperation";
+        echo ("<script LANGUAGE='JavaScript'>
+          window.alert('Jeux deja pret veuillez patienter le paiement');
+          window.location.href='http://localhost/gameshark/php/reservation_admin.php';
+       </script>");
+        exit();
+    }
+    elseif($state==3) {
+        echo ("<script LANGUAGE='JavaScript'>
+        window.alert('Commande annulée veuillez appuyer sur paid pour le retirer');
+        window.location.href='http://localhost/gameshark/php/reservation_admin.php';
+     </script>");
         exit();
     }
 
-    else {
-    $SQL_ready = "UPDATE reservation INNER JOIN game on reservation.id_game = game.id_game SET id_state= 2, game.quantity= '".$qteTotal."'  WHERE id_reservation= '".$donneeID."' " ;
-    $EXE_ready= mysqli_query($db, $SQL_ready);
-    header ('Location: http://localhost/gameshark/php/reservation_admin.php');
+    elseif($state==1){
+    $SQL_ready = "UPDATE reservation INNER JOIN game on reservation.id_game = game.id_game SET id_state= 2 WHERE id_reservation='".$donneeID."'" ;
+    $EXE_ready= mysqli_query($db,$SQL_ready);
+     header ('Location: http://localhost/gameshark/php/reservation_admin.php');
 }
 
     }
@@ -35,7 +46,7 @@ elseif  (isset($_POST['paid'])) {
         exit();
     }
     else {
-        $SQL_paid = "UPDATE reservation SET id_state= 3  WHERE id_reservation= '".$donneeID."' " ;
+        $SQL_paid = "UPDATE reservation SET id_state= 4  WHERE id_reservation= '".$donneeID."' " ;
         $EXE_paid= mysqli_query($db, $SQL_paid);
 
         header ('Location: http://localhost/gameshark/php/reservation_admin.php');

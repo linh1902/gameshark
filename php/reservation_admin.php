@@ -15,27 +15,101 @@ else {
     include_once "../config/connexion_7_2020.php";
     include_once "../html/header.html";
 ?>
+<head>
+    <link rel="stylesheet" href="../css/game.css"/>
+</head>
 <body>
+   
     <div id="corps">
+         <!-- INSERTION DE LA BARRE DE RECHERCHE -->
+
+    <form action = "reservation_admin.php" method = "get">
+        <input type = "search" name = "mot_clé">
+        <input type = "submit" name = "search" value = "Rechercher">
+    </form>
         <table>
                 <tr>
-                    <th>Nom Utilisateur</th>
-                    <th>Mail</th>
-                    <th>nom du jeu</th>
-                   <th>platforme</th> 
-                   <th>Prix (en euros)</th>
-                   <th>Etat de reservation</th>
-                   <th>Quantité</th>
-                   <th>quantité disponible</th>
+                    <th class="entete_tableau">Nom Utilisateur</th>
+                    <th class="entete_tableau">Mail</th>
+                    <th class="entete_tableau">nom du jeu</th>
+                    <th class="entete_tableau">platforme</th> 
+                    <th class="entete_tableau">Prix (en euros)</th>
+                    <th class="entete_tableau">Etat de reservation</th>
+                    <th class="entete_tableau">Quantité</th>
+                    <th class="entete_tableau">quantité disponible</th>
 
                 </tr>
-                <?php
-                    $SQL_SELECT_RESERVATION = "SELECT id_reservation, users.user_name, users.mail,game.id_game, game.name,reservation.id_state, platform.platform_name, game.price, game.quantity,state.reservation_value, Qte FROM reservation 
+                <?php 
+    // code php pour l'execution de  de la barre de recherche (dans le cas ou l'utilisateur a saisie des mot clé )
+
+    if (isset($_GET["search"])){
+    $_GET["mot_clé"] = htmlspecialchars($_GET["mot_clé"]); // sécuriser le formulaire contre les failles html
+    $keyword = $_GET["mot_clé"];
+    $keyword = trim($keyword); // supprimer les espaces dans la requête de l'internaute
+    $keyword = strip_tags($keyword); // supprimer les balises html dans la requête
+    
+        if (isset($keyword)){
+        $keyword = strtolower($keyword); // transformation du texte en minuscule
+        $select_search = "SELECT id_reservation, users.user_name, users.mail,game.id_game, game.name,reservation.id_state, platform.platform_name, game.price, game.quantity,state.reservation_value, Qte FROM reservation 
+        INNER JOIN game ON reservation.id_game = game.id_game 
+        INNER JOIN users ON reservation.id_users = users.id_users 
+        INNER JOIN platform on game.id_platform = platform.id_platform 
+        INNER JOIN state on reservation.id_state = state.id_state  WHERE users.mail LIKE '".$keyword."%' AND reservation.id_state != '4'";
+        $exe_select_search = mysqli_query($db,$select_search); 
+      
+        while($donnee = mysqli_fetch_assoc($exe_select_search))
+       
+        {
+        ?>
+            <form action="action_reservation.php" method="post">
+                    
+                        
+            <input type="hidden" name="id_reservation" value=<?php echo $donnee['id_reservation'];?> >
+            <input type="hidden" name="id_game" value=<?php echo $donnee['id_game'];?> >
+            <input type="hidden" name="id_state" value=<?php echo $donnee['id_state'];?> >
+            <tr>
+            <td class="element_tableau">
+                <?php echo $donnee['user_name'];?> 
+            </td>
+            <td class="element_tableau">
+                <?php echo $donnee['mail'];?>
+            </td>
+            <td class="element_tableau">
+                <?php echo $donnee['name'];?>
+            </td>
+            <td class="element_tableau">
+                <?php echo $donnee['platform_name']?>
+            </td>
+            <td class="element_tableau">
+                <?php echo $donnee['price'];?>
+             </td>
+
+             <td class="element_tableau">
+                <?php echo $donnee['reservation_value'];?> 
+            </td>
+             
+            <td class="element_tableau">
+                <input class="element_tableau" type="text" name="quantityAvailable" readonly value=<?php echo  $donnee['Qte'];?>>
+            </td>
+            <td class="element_tableau">
+                <input  class="element_tableau" type="text" name="quantity" readonly value=<?php echo  $donnee['quantity'];?>>
+            </td>
+            <td> <input class="button"type="submit" name="ready" value="ready" onclick="return(confirm('Etes-vous sûr que la commande est prête ?'));"></td>
+            <td> <input class="button" type="submit" name="paid"  value="paid / Annuler" onclick="return(confirm('Etes-vous sûr que la commande a été payer ?'));"></td>
+        </tr>
+
+        </form>
+        <?php
+            }
+        }
+         }else{
+               
+                      $SQL_SELECT_RESERVATION = "SELECT id_reservation, users.user_name, users.mail,game.id_game, game.name,reservation.id_state, platform.platform_name, game.price, game.quantity,state.reservation_value, Qte FROM reservation 
                     INNER JOIN game ON reservation.id_game = game.id_game 
                     INNER JOIN users ON reservation.id_users = users.id_users 
                     INNER JOIN platform on game.id_platform = platform.id_platform 
                     INNER JOIN state on reservation.id_state = state.id_state
-                    where reservation.id_state = '1' OR reservation.id_state = '2' ";
+                    where reservation.id_state != '4' ";
                     $EXE_SQL_SELECT_RESERVATION = mysqli_query($db, $SQL_SELECT_RESERVATION);
             
                     if (!$EXE_SQL_SELECT_RESERVATION) {
@@ -52,45 +126,47 @@ else {
                         <input type="hidden" name="id_game" value=<?php echo $donnee['id_game'];?> >
                         <input type="hidden" name="id_state" value=<?php echo $donnee['id_state'];?> >
                         <tr>
-                        <td>
-                        <input type="text" name="name" value=<?php echo $donnee['user_name'];?> >
+                        <td class="element_tableau">
+                            <?php echo $donnee['user_name'];?> 
                         </td>
-                        <td>
-                        <input type="text" name="mail" value=<?php echo $donnee['mail'];?> >
+                        <td class="element_tableau">
+                            <?php echo $donnee['mail'];?>
                         </td>
-                        <td>
-                        <input type="text" name="game_name" value=<?php echo $donnee['name'];?> >
+                        <td class="element_tableau">
+                            <?php echo $donnee['name'];?>
                         </td>
-                        <td><?php echo $donnee['platform_name']?></td>
-
-                        <td>
-                            <input type="number" name="price" step="any" value=<?php echo $donnee['price']?>> 
+                        <td class="element_tableau">
+                            <?php echo $donnee['platform_name']?>
+                        </td>
+                        <td class="element_tableau">
+                            <?php echo $donnee['price'];?>
                          </td>
 
-                         <td>
-                        <input type="text" name="state_reservation" value=<?php echo $donnee['reservation_value'];?> >
+                         <td class="element_tableau">
+                            <?php echo $donnee['reservation_value'];?> 
                         </td>
                          
-                        <td><input type="text" name="quantity" value=<?php echo  $donnee['Qte']; ?> ></td>
-                        <td><input type="text" name="quantityAvailable" value=<?php echo  $donnee['quantity']; ?> ></td>
-
-                        <td> <input class="button"type="submit" name="ready" value="ready"></td>
-                        <td> <input class="button" type="submit" name="paid"  value="paid"></td>
+                        <td class="element_tableau">
+                            <input class="element_tableau" type="text" name="quantityAvailable" readonly value=<?php echo  $donnee['Qte'];?>>
+                        </td>
+                        <td class="element_tableau">
+                            <input  class="element_tableau" type="text" name="quantity" readonly value=<?php echo  $donnee['quantity'];?>>
+                        </td>
+                        <td> <input class="button"type="submit" name="ready" value="ready" onclick="return(confirm('Etes-vous sûr que la commande est prête ?'));"></td>
+                        <td> <input class="button" type="submit" name="paid"  value="paid / Annuler" onclick="return(confirm('Etes-vous sûr que la commande a été payer ?'));"></td>
                     </tr>
 
                  </form>
                 <?php
                 }
+            }
             ?>
         </table>
      </div>
 </body>
 
-<?php 
-include_once "../html/footer.html";
-?>
-</html>
 
+</html>
 <?php
-}
-?>
+  } 
+  ?>   

@@ -12,6 +12,8 @@ $price= $_POST['price'];
 $state = $_POST['state'];
 $qte= $_POST['qte'];
 
+
+
 if($release == ""){
 
 

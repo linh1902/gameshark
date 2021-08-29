@@ -55,14 +55,50 @@ li:hover {
 
 /* Corps de la page*/
 
+#title_corps {
+    display: flex;
+    justify-content: center;
+}
+
+.name {
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+#title_accueil {
+    display: flex;
+    justify-content: center;
+    color: blue;
+}
+
 #corps {
     height: 60%;
     flex: 1;
 }
 
+.corps_accueil {
+    display: inline-flex;
+}
+
+.contenant {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    margin-left: 200px;
+}
+
+.texte_contenant {
+    margin-left: 100px;
+}
+
 .texte_body {
     font-weight: bold;
     font-size: 60px;
+}
+
+.text_body {
+    font-weight: bold;
+    font-size: 20px;
 }
 
 
