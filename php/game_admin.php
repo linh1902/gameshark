@@ -39,7 +39,7 @@
 
         <div id="ajouter">
         <a href="../html/form_add_game.php">
-            <input type="button" class="add" value="Add">
+            <input type="button" class="add" value="Ajouter">
         </a>
     </div>
 

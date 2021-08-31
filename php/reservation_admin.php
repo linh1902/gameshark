@@ -29,14 +29,13 @@ else {
     </form>
         <table>
                 <tr>
-                    <th class="entete_tableau">Nom Utilisateur</th>
                     <th class="entete_tableau">Mail</th>
-                    <th class="entete_tableau">nom du jeu</th>
-                    <th class="entete_tableau">platforme</th> 
+                    <th class="entete_tableau">Nom du jeu</th>
+                    <th class="entete_tableau">Platforme</th> 
                     <th class="entete_tableau">Prix (en euros)</th>
                     <th class="entete_tableau">Etat de reservation</th>
                     <th class="entete_tableau">Quantité</th>
-                    <th class="entete_tableau">quantité disponible</th>
+                    <th class="entete_tableau">Quantité disponible</th>
 
                 </tr>
                 <?php 
@@ -71,9 +70,6 @@ else {
             <input type="hidden" name="id_state" value=<?php echo $donnee['id_state'];?> >
             <tr>
             <td class="element_tableau">
-                <?php echo $donnee['user_name'];?> 
-            </td>
-            <td class="element_tableau">
                 <?php echo $donnee['mail'];?>
             </td>
             <td class="element_tableau">
@@ -96,8 +92,8 @@ else {
             <td class="element_tableau">
                 <input  class="element_tableau" type="text" name="quantity" readonly value=<?php echo  $donnee['quantity'];?>>
             </td>
-            <td> <input class="button"type="submit" name="ready" value="ready" onclick="return(confirm('Etes-vous sûr que la commande est prête ?'));"></td>
-            <td> <input class="button" type="submit" name="paid"  value="paid / Annuler" onclick="return(confirm('Etes-vous sûr que la commande a été payer ?'));"></td>
+            <td> <input class="button"type="submit" name="ready" value="Prêt" onclick="return(confirm('Etes-vous sûr que la commande est prête ?'));"></td>
+            <td> <input class="button" type="submit" name="paid"  value="Payé / Annuler" onclick="return(confirm('Etes-vous sûr que la commande a été payer ?'));"></td>
         </tr>
 
         </form>
@@ -131,9 +127,6 @@ else {
                         <input type="hidden" name="id_state" value=<?php echo $donnee['id_state'];?> >
                         <tr>
                         <td class="element_tableau">
-                            <?php echo $donnee['user_name'];?> 
-                        </td>
-                        <td class="element_tableau">
                             <?php echo $donnee['mail'];?>
                         </td>
                         <td class="element_tableau">
@@ -156,8 +149,8 @@ else {
                         <td class="element_tableau">
                             <input  class="element_tableau" type="text" name="quantity" readonly value=<?php echo  $donnee['quantity'];?>>
                         </td>
-                        <td> <input class="button"type="submit" name="ready" value="ready" onclick="return(confirm('Etes-vous sûr que la commande est prête ?'));"></td>
-                        <td> <input class="button" type="submit" name="paid"  value="paid / Annuler" onclick="return(confirm('Etes-vous sûr que la commande a été payer ?'));"></td>
+                        <td> <input class="button"type="submit" name="ready" value="Prêt" onclick="return(confirm('Etes-vous sûr que la commande est prête ?'));"></td>
+                        <td> <input class="button" type="submit" name="paid"  value="Payé / Annuler" onclick="return(confirm('Etes-vous sûr que la commande a été payer ?'));"></td>
                     </tr>
 
                  </form>
