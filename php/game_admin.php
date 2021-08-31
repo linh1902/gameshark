@@ -46,7 +46,7 @@
     <!-- INSERTION DE LA BARRE DE RECHERCHE -->
 
     <form action = "game_admin.php" method = "get">
-        <input type = "search" name = "mot_clé"  id = "searchBar">
+        <input type = "search" name = "mot_clé"  id = "searchBar" placeholder="Nom d'un jeu">
         <input type = "submit" name = "search" value = "Rechercher" id = "searchButton">
     </form>
     <table>

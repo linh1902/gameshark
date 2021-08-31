@@ -24,7 +24,7 @@ else {
          <!-- INSERTION DE LA BARRE DE RECHERCHE -->
 
     <form action = "reservation_admin.php" method = "get">
-        <input type = "search" name = "mot_clé"  value ="mail d'un client" id = "searchBar">
+        <input type = "search" name = "mot_clé"  placeholder="mail d'un client" id = "searchBar">
         <input type = "submit" name = "search" value = "Rechercher"  id = "searchButton">
     </form>
         <table>

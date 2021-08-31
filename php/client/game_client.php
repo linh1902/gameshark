@@ -26,7 +26,7 @@
  </head>
 <body>
 <form action = "game_client.php" method = "get">
-        <input type = "search" name = "mot_clé"  value ="Nom d'un jeux" id = "searchBar">
+        <input type = "search" name = "mot_clé"  placeholder ="Nom d'un jeu" id = "searchBar">
         <input type = "submit" name = "search" value = "Rechercher" id = "searchButton">
     </form>
    
