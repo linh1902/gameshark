@@ -24,8 +24,8 @@ else {
          <!-- INSERTION DE LA BARRE DE RECHERCHE -->
 
     <form action = "reservation_admin.php" method = "get">
-        <input type = "search" name = "mot_clé">
-        <input type = "submit" name = "search" value = "Rechercher">
+        <input type = "search" name = "mot_clé"  value ="mail d'un client" id = "searchBar">
+        <input type = "submit" name = "search" value = "Rechercher"  id = "searchButton">
     </form>
         <table>
                 <tr>
@@ -50,13 +50,15 @@ else {
     
         if (isset($keyword)){
         $keyword = strtolower($keyword); // transformation du texte en minuscule
+        // requête SQL pour la barre de recherche
         $select_search = "SELECT id_reservation, users.user_name, users.mail,game.id_game, game.name,reservation.id_state, platform.platform_name, game.price, game.quantity,state.reservation_value, Qte FROM reservation 
         INNER JOIN game ON reservation.id_game = game.id_game 
         INNER JOIN users ON reservation.id_users = users.id_users 
         INNER JOIN platform on game.id_platform = platform.id_platform 
         INNER JOIN state on reservation.id_state = state.id_state  WHERE users.mail LIKE '".$keyword."%' AND reservation.id_state != '4'";
         $exe_select_search = mysqli_query($db,$select_search); 
-      
+        
+        // récuperation des donnée et affichage sur la page
         while($donnee = mysqli_fetch_assoc($exe_select_search))
        
         {
@@ -102,20 +104,22 @@ else {
         <?php
             }
         }
+        // Cas où rien n'a ete inscrit dans la abrre de recherche, affichage complet de tout les jeux 
          }else{
-               
-                      $SQL_SELECT_RESERVATION = "SELECT id_reservation, users.user_name, users.mail,game.id_game, game.name,reservation.id_state, platform.platform_name, game.price, game.quantity,state.reservation_value, Qte FROM reservation 
+                    // requête de selection complete des jeux 
+                    $SQL_SELECT_RESERVATION = "SELECT id_reservation, users.user_name, users.mail,game.id_game, game.name,reservation.id_state, platform.platform_name, game.price, game.quantity,state.reservation_value, Qte FROM reservation 
                     INNER JOIN game ON reservation.id_game = game.id_game 
                     INNER JOIN users ON reservation.id_users = users.id_users 
                     INNER JOIN platform on game.id_platform = platform.id_platform 
                     INNER JOIN state on reservation.id_state = state.id_state
                     where reservation.id_state != '4' ";
                     $EXE_SQL_SELECT_RESERVATION = mysqli_query($db, $SQL_SELECT_RESERVATION);
-            
+
                     if (!$EXE_SQL_SELECT_RESERVATION) {
                             printf("Error: %s\n", mysqli_error($db));
                             exit();
                         }
+                //  Recuperation des donnée et affichage 
                 while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_RESERVATION)) 
                 {
                 ?>

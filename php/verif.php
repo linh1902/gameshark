@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once "../config/connexion_7_2020.php";
+
 if(isset($_POST['mail']) && isset($_POST['password'])){
  
 $mail= $_POST['mail'];
@@ -14,18 +15,17 @@ $role= "";
     $SQL_SELECT_ROLE = " SELECT id_users, role, user_name, surname FROM `users` WHERE mail ='".$mail."' AND password = '".$password."';";
      $exe_SQL_SELECT_ROLE=  mysqli_query($db,$SQL_SELECT_ROLE);
      $reponse = mysqli_fetch_array($exe_SQL_SELECT_ROLE);
-     //$reponse.length;
      $role= $reponse['role'];
          if($role==1){ 
             
-            // Storing session data
+            // initialisation des donnee nom et prenom administrateur
             $_SESSION["firstname"] = $reponse['surname'];
             $_SESSION["lastname"] = $reponse['user_name'];
              header('location: http://localhost/gameshark/php/page_accueil_admin.php');
       
         }
         if($role==2){
-             // Storing session data
+             // initialisation des donnee nom et prenom client ainsi que leur id
              $_SESSION["firstname"] = $reponse['surname'];
              $_SESSION["lastname"] = $reponse['user_name'];
              $_SESSION["id_client"] = $reponse ['id_users'];
@@ -33,7 +33,7 @@ $role= "";
         
         }
         
-
+        // erreur de connection
         else
     {
         echo ("<script LANGUAGE='JavaScript'>

@@ -21,12 +21,13 @@
  <head>
  <link rel="stylesheet" href="../../css/image.css" media="all" />
  <link rel="stylesheet" href="../../css/game.css"/>
+ <link rel="stylesheet" href="../../css/page_stylesheet.css"/>
 
  </head>
 <body>
 <form action = "game_client.php" method = "get">
-        <input type = "search" name = "mot_clé">
-        <input type = "submit" name = "search" value = "Rechercher">
+        <input type = "search" name = "mot_clé"  value ="Nom d'un jeux" id = "searchBar">
+        <input type = "submit" name = "search" value = "Rechercher" id = "searchButton">
     </form>
    
     <table> <tr>

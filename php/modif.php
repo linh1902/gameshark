@@ -9,7 +9,7 @@ $qte = $_POST['quantity'];
 
 if (isset($_POST['supprimer'])) {
  
-    // j'ai cliqué sur supprimer
+    // j'ai cliqué sur supprimer, supprime de la base le jeux choisie
 $SQL_delete = "DELETE from game where id_game = '".$donneeID."';";
 $EXE_delete= mysqli_query($db, $SQL_delete);
 header ('Location: http://localhost/gameshark/php/game_admin.php');
@@ -21,6 +21,7 @@ if (!$EXE_delete) {
 
 } 
  
+    /*  J'ai cliquer sur modifier et modifie les valeur entrer dans la base de donnée */
 } elseif (isset($_POST['modifier'])) {
  
    

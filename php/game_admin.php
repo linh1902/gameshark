@@ -46,8 +46,8 @@
     <!-- INSERTION DE LA BARRE DE RECHERCHE -->
 
     <form action = "game_admin.php" method = "get">
-        <input type = "search" name = "mot_clé">
-        <input type = "submit" name = "search" value = "Rechercher">
+        <input type = "search" name = "mot_clé"  id = "searchBar">
+        <input type = "submit" name = "search" value = "Rechercher" id = "searchButton">
     </form>
     <table>
         <tr>
@@ -74,6 +74,9 @@
         $keyword = strtolower($keyword); // transformation du texte en minuscule
         $select_search = "SELECT * FROM game INNER JOIN platform ON game.id_platform = platform.id_platform  WHERE game.name LIKE '%".$keyword."%'";
         $exe_select_search = mysqli_query($db,$select_search);
+        if (!$exe_select_search) {
+            printf("Error: %s\n", mysqli_error($db));
+            exit();}
         while($donnee = mysqli_fetch_assoc($exe_select_search)) 
         {
         ?>
@@ -120,7 +123,7 @@
     }else{
         
         // Cas ou l'utilisateur n'a pas saisie de mot dans la barre de recherche
-        
+
         $SQL_SELECT_GAME = " SELECT * FROM game INNER JOIN platform ON game.id_platform = platform.id_platform ";
         $EXE_SQL_SELECT_GAME = mysqli_query($db,$SQL_SELECT_GAME);
 

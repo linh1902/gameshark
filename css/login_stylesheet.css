@@ -39,6 +39,11 @@ body {
     font-size: 30px;
 }
 
+#forgotPassword {
+    color: white;
+    text-decoration: underline;
+}
+
 .input {
     width: 300px;
     height: 30px;
@@ -49,4 +54,17 @@ body {
 
 #send {
     margin-left: 100px;
+}
+
+#formulaire {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #4E2746;
+    width: 30%;
+    height: 50%;
+    margin: 0 auto;
+    border-radius: 30px;
+    padding-bottom: 40px;
 }

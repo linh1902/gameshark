@@ -1,6 +1,8 @@
 <?php
   
   include_once "../config/connexion_7_2020.php";
+
+  // requete de recuperation des platform
   $SQL_SELECT_PLATFORM = " SELECT * FROM platform";
   $EXE_SQL_SELECT_PLATFORM =  mysqli_query($db,$SQL_SELECT_PLATFORM);
 
@@ -25,6 +27,7 @@
         <h1 id="title2"> Ajout d'un jeu </h1>
     </div>
     <div>
+        <!--  Formulaire d'ajout  de jeux   -->
         <form action="../php/add_game.php" method="POST">
 
             <label class="text">Nom du jeux</label>
@@ -34,6 +37,7 @@
             <fieldset>
                 <legend class="text">Plateforme</legend>
                 <?php
+                // affichage des donnée de plateforme récupérer
                 while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_PLATFORM))
                 {
                     print "<input type='radio' name='plateforme' value=".$donnee['id_platform']." class='input' checked> ".$donnee['platform_name']."";
