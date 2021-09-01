@@ -34,7 +34,7 @@ else {
         <h1  >Derniers ajouts </h1>
         </div>
 
-        <!-- Récuperation des donneé dans la base de donnée les deux derniers -->
+        <!-- Récuperation des donnée dans la base de donnée les deux derniers -->
         
         <?php 
         $SQL_SELECT_GAME = " SELECT * FROM game INNER JOIN platform ON game.id_platform = platform.id_platform  ORDER BY id_game DESC LIMIT 2 ";

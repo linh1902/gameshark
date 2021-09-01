@@ -40,13 +40,13 @@ else {
         <?php 
         $SQL_SELECT_GAME = " SELECT * FROM game INNER JOIN platform ON game.id_platform = platform.id_platform  ORDER BY id_game DESC LIMIT 2 ";
          $EXE_SQL_SELECT_GAME =  mysqli_query($db,$SQL_SELECT_GAME);
-         if (!$EXE_SQL_SELECT_GAME) {
+         if (!$EXE_SQL_SELECT_GAME) { // affichge de l'erreur si la resuqetene fonctionne pas
             printf("Error: %s\n", mysqli_error($db));
             exit();
         }
         else{
             
-         while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_GAME)){
+         while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_GAME)){ // affichage des donnée récupérer
         ?>
         <div class="corps_accueil">;
         <div class="contenant">

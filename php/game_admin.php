@@ -74,12 +74,13 @@
         $keyword = strtolower($keyword); // transformation du texte en minuscule
         $select_search = "SELECT * FROM game INNER JOIN platform ON game.id_platform = platform.id_platform  WHERE game.name LIKE '%".$keyword."%'";
         $exe_select_search = mysqli_query($db,$select_search);
-        if (!$exe_select_search) {
+        if (!$exe_select_search) { // renvoie l'erreur en cas ou la requete ne fonctionne aps
             printf("Error: %s\n", mysqli_error($db));
             exit();}
         while($donnee = mysqli_fetch_assoc($exe_select_search)) 
         {
         ?>
+        <!-- Debut du formulaire  de recuperation de donnée-->
             <form action="modif.php" method="post">
             <tr>
                 <td class="element_tableau">
@@ -129,7 +130,7 @@
 
         
 
-        if (!$EXE_SQL_SELECT_GAME) {
+        if (!$EXE_SQL_SELECT_GAME) { // affichage des erreur si la requete ne fonctionne aps
             printf("Error: %s\n", mysqli_error($db));
             exit();
         }
@@ -137,7 +138,7 @@
     
                 <?php
                 
-                while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_GAME)) 
+                while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_GAME)) // affichage des element recupérer
                 {
                 ?>
                     <form action="modif.php" method="post">

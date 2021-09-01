@@ -52,9 +52,9 @@
     
         if (isset($keyword)){
         $keyword = strtolower($keyword); // transformation du texte en minuscule
-        $select_search = "SELECT * FROM game INNER JOIN platform ON game.id_platform = platform.id_platform  WHERE game.name LIKE '%".$keyword."%'";
+        $select_search = "SELECT * FROM game INNER JOIN platform ON game.id_platform = platform.id_platform  WHERE game.name LIKE '%".$keyword."%'";// requete de selection de la recherche
         $exe_select_search = mysqli_query($db,$select_search);
-        while($donnee = mysqli_fetch_assoc($exe_select_search)) 
+        while($donnee = mysqli_fetch_assoc($exe_select_search)) // debut de la boucle d'affichage 
         {
             ?>
             <form action="../client/add_reservation" method="post">
@@ -96,6 +96,7 @@
             <?php
                 }
             }
+        // cas ou rien n'as été recherché dans la barre de recherche
         }else{ 
             $SQL_SELECT_GAME = " SELECT * FROM game INNER JOIN platform ON game.id_platform = platform.id_platform ";
             $EXE_SQL_SELECT_GAME = mysqli_query($db,$SQL_SELECT_GAME);

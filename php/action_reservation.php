@@ -52,6 +52,7 @@ elseif  (isset($_POST['paid'])) {
      </script>");
         exit();
     }
+    /*  Cas ou tout est bon et en ordre   */
     else {
         $SQL_paid = "UPDATE reservation SET id_state= 4  WHERE id_reservation= '".$donneeID."' " ;
         $EXE_paid= mysqli_query($db, $SQL_paid);

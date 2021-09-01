@@ -26,7 +26,7 @@ if (isset($_POST['valider'])) {
     $exe_SQL_SELECT=  mysqli_query($db,$SQL_SELECT);
     $reponse = mysqli_fetch_assoc($exe_SQL_SELECT);
     $role= $reponse['role'];
-
+/* si le mail est celui de l'administrateur*/
     if($mail==$reponse['mail']){
         if($role==1){
             echo ("<script LANGUAGE='JavaScript'>
@@ -34,6 +34,7 @@ if (isset($_POST['valider'])) {
             window.location.href='http://localhost/gameshark/html/forgot_password.html';
             </script>");
         }
+        /* si tout est en ordre le mail est les mots de passes sont correct*/
         else {
             $SQL_update= "UPDATE users SET password= '".$newPassword."' WHERE mail= '".$mail."';";
             $EXE_update= mysqli_query($db, $SQL_update);
@@ -44,12 +45,14 @@ if (isset($_POST['valider'])) {
            
 
         }
+        /* si le mail n'est pas valide */
     }else{
         echo("<script LANGUAGE='JavaScript'>
             window.alert('votre mail n\'est pas valide');
             window.location.href='http://localhost/gameshark/html/forgot_password.html';
             </script>");
     }
+    /* si les mots de passe ne sont pas valident  */
     }else{
         echo("<script LANGUAGE='JavaScript'>
             window.alert('mot de passe non identique');

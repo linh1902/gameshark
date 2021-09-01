@@ -37,6 +37,7 @@
                    
 
                 </tr>
+                <!-- recuperation des reservation dans la base de donnée -->
                 <?php
                     $SQL_SELECT_RESERVATION = " SELECT * FROM reservation 
                     INNER JOIN game ON reservation.id_game = game.id_game 
@@ -46,11 +47,11 @@
                     where reservation.id_users = '".$_SESSION["id_client"]."' AND  reservation.id_state = '1 OR 2' ";
                     $EXE_SQL_SELECT_RESERVATION = mysqli_query($db, $SQL_SELECT_RESERVATION);
             
-                    if (!$EXE_SQL_SELECT_RESERVATION) {
+                    if (!$EXE_SQL_SELECT_RESERVATION) { // si la requete ne fontionne affcihe l'erreur
                             printf("Error: %s\n", mysqli_error($db));
                             exit();
                         }
-                while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_RESERVATION)) 
+                while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_RESERVATION)) // affichage des reservation
                 {
                 ?>
                     <form action="../client/cancel.php" method="post">

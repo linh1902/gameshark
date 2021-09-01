@@ -52,7 +52,7 @@ if($password == $comfirmPwd){
     }
 }
 
-
+ /* si mot de passe non identique*/
 else {
     echo ("<script LANGUAGE='JavaScript'>
     window.alert('mot de passe non identique veuillez les ressaisir');
