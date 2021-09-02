@@ -100,9 +100,9 @@ else {
         <?php
             }
         }
-        // Cas où rien n'a ete inscrit dans la abrre de recherche, affichage complet de tout les jeux 
+            // Cas où rien n'a ete inscrit dans la barre de recherche, affichage complet de tout les jeux 
          }else{
-                    // requête de selection complete des jeux 
+                    // requête de selection complête des réservations
                     $SQL_SELECT_RESERVATION = "SELECT id_reservation, users.user_name, users.mail,game.id_game, game.name,reservation.id_state, platform.platform_name, game.price, game.quantity,state.reservation_value, Qte FROM reservation 
                     INNER JOIN game ON reservation.id_game = game.id_game 
                     INNER JOIN users ON reservation.id_users = users.id_users 
