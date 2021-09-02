@@ -17,7 +17,7 @@ $role= "2";
 if( !filter_var($mail, FILTER_VALIDATE_EMAIL) ){
 
     echo ("<script LANGUAGE='JavaScript'>
-    window.alert('votre mail n\'est pas une adresse mail comforme');
+    window.alert('votre mail n\'est pas une adresse mail conforme');
     window.location.href='http://localhost/gameshark/html/inscription.html';
  </script>");
   exit();
