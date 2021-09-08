@@ -21,11 +21,12 @@ else {
 ?>
 
 <head>
+
  <link rel="stylesheet" href="../css/image.css" media="all" />
 
  </head>
 <body>
-    <div >
+    <div class="corps" >
         <div id="title_corps">
         <?php 
         print "<p class='name'> Welcome back my administrator   $firstname $lastname hope you change something good   </p>" ;
@@ -48,7 +49,7 @@ else {
             
          while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_GAME)){ // affichage des donnée récupérer
         ?>
-        <div class="corps_accueil">;
+        <div class="corps_accueil">
         <div class="contenant">
         <?php  print "<img class='jaquette_accueil' src='../image/".$donnee['jaquette']."'>";?>
             <div class="texte_contenant" >

@@ -1,3 +1,60 @@
+@media (max-width: 768px) {
+    .jaquette {
+        width: 50px;
+        height: auto;
+    }
+    .jaquette_accueil {
+        width: auto;
+        height: 150px;
+    }
+}
+
+@media (min-width: 768px) {
+    .jaquette {
+        width: 100px;
+        height: auto;
+    }
+    .jaquette_accueil {
+        width: auto;
+        height: 200px;
+    }
+}
+
+@media (min-width: 992px) {
+    .jaquette {
+        width: 150px;
+        height: auto;
+    }
+    .jaquette_accueil {
+        width: auto;
+        height: 250px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .jaquette {
+        width: 200px;
+        height: auto;
+    }
+    .jaquette_accueil {
+        width: auto;
+        height: 250px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .jaquette {
+        width: 200px;
+        height: auto;
+    }
+    .jaquette_accueil {
+        width: auto;
+        height: 400px;
+    }
+}
+
+
+/*
 .jaquette {
     width: 200px;
     height: auto;
@@ -7,3 +64,4 @@
     width: auto;
     height: 500px;
 }
+*/

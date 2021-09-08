@@ -10,18 +10,21 @@ if ($qteDes == 0){
 
 } else {
 
-$SQL_Select = "SELECT quantity from game WHERE  id_game = '".$id."' ";
+    $SQL_Select = "SELECT quantity from game WHERE  id_game = '".$id."' ";
     $EXE_Select = mysqli_query($db,$SQL_Select);
     if($donnee = mysqli_fetch_assoc($EXE_Select)){
-
-if ($qteDes > $donnee['quantity']) {
+    // si quantité reserver supeireur au quantité en stock
+    if ($qteDes > $donnee['quantity']) {
     
-    echo " veuillez nous excusez mais votre reservation est impossible vous depasser le stock que nous possedons ";
+    echo ("<script LANGUAGE='JavaScript'>
+        window.alert('Veuillez nous excusez mais votre commande dépasse la quantité disponible');
+        window.location.href='http://localhost/gameshark/php/client/game_client.php';
+     </script>");
     exit ();
-
+    // mise a jour des quantité disponible
 } else {
     
-   $qteTotal = $donnee['quantity'] - $qteDes;
+        $qteTotal = $donnee['quantity'] - $qteDes;
 
         $SQL_update = "UPDATE game SET quantity= '".$qteTotal."' WHERE  id_game = '".$id."';";
         $EXE_update = mysqli_query($db, $SQL_update);
