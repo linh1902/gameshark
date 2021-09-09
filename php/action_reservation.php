@@ -29,7 +29,7 @@ if (isset($_POST['ready'])) {
     /*  Cas ou la reservation a été annuler au prealable par le client  */
     elseif($state==3) {
         echo ("<script LANGUAGE='JavaScript'>
-        window.alert('Commande annulée veuillez appuyer sur paid pour le retirer');
+        window.alert('Commande annulée veuillez appuyer sur annuler pour le retirer');
         window.location.href='http://localhost/gameshark/php/reservation_admin.php';
      </script>");
         exit();
@@ -42,8 +42,8 @@ if (isset($_POST['ready'])) {
 }
 
     }
-    /*  permet de mettre une reservation en état de "payer / annuler "  */
-elseif  (isset($_POST['paid'])) {
+    /*  permet de mettre une reservation en état de "payer "  */
+    elseif  (isset($_POST['paid'])) {
     if ($state==1) {
         
         echo ("<script LANGUAGE='JavaScript'>
@@ -52,7 +52,8 @@ elseif  (isset($_POST['paid'])) {
      </script>");
         exit();
     }
-    /*  Cas ou tout est bon et en ordre   */
+    
+    /*  Cas ou tout est en ordre   */
     else {
         $SQL_paid = "UPDATE reservation SET id_state= 4  WHERE id_reservation= '".$donneeID."' " ;
         $EXE_paid= mysqli_query($db, $SQL_paid);

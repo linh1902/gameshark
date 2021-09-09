@@ -36,7 +36,7 @@ if($password == $comfirmPwd){
     if($mail==$reponse['mail']){
     
         echo ("<script LANGUAGE='JavaScript'>
-        window.alert('votre mail existe deja ');
+        window.alert('votre mail existe déjà ');
         window.location.href='http://localhost/gameshark/html/login.html';
      </script>");
     }
@@ -46,7 +46,7 @@ if($password == $comfirmPwd){
         $SQL_ADDUSER = "INSERT INTO users(user_name, surname, birth_date, mail, phone_number, password, role) VALUES ('".$nom."','".$prenom."','".$formatted_birthdate."','".$mail."','".$numPhone."','".$password."','".$role."');";
         mysqli_query($db, $SQL_ADDUSER);
         echo ("<script LANGUAGE='JavaScript'>
-        window.alert('Bienvenu votre compte a été créer');
+        window.alert('Bienvenue votre compte a été créé');
         window.location.href='http://localhost/gameshark/html/login.html';
      </script>");
     }
@@ -55,7 +55,7 @@ if($password == $comfirmPwd){
  /* si mot de passe non identique*/
 else {
     echo ("<script LANGUAGE='JavaScript'>
-    window.alert('mot de passe non identique veuillez les ressaisir');
+    window.alert('mot de passe non identique veuillez les ressaisirs');
     window.location.href='http://localhost/gameshark/html/inscription.html';
  </script>");
 }

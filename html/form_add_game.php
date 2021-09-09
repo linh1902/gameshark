@@ -17,16 +17,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/login_stylesheet.css">
+    <link rel="stylesheet" href="../css/add_game.css">
 </head>
 
 <body>
     <div>
         <h1 id="title2"> Ajout d'un jeu </h1>
     </div>
-    <div>
+    <div id="addGame">
         <!--  Formulaire d'ajout  de jeux   -->
         <form action="../php/add_game.php" method="POST">
 
@@ -35,12 +33,12 @@
             <label class="text">Image jaquette</label>
             <input type="file" name="img" class="input" accept=".jpg, .jpeg, .png" multiple required>
             <fieldset>
-                <legend class="text">Plateforme</legend>
+                <legend class="radio">Plateforme</legend>
                 <?php
                 // affichage des donnée de plateforme récupérer
                 while($donnee = mysqli_fetch_assoc($EXE_SQL_SELECT_PLATFORM))
                 {
-                    print "<input type='radio' name='plateforme' value=".$donnee['id_platform']." class='input' checked> ".$donnee['platform_name']."";
+                    print "<input type='radio' name='plateforme' value=".$donnee['id_platform']." class='radio' checked> <label class='text'>".$donnee['platform_name']."</label>";
                 } ?>
                 
             </fieldset>
@@ -52,14 +50,17 @@
 
             <fieldset>
                 <legend class="text">Etat</legend>
-                <input type="radio" name="state" value="1" class="input" checked>Neuf
-                <input type="radio" name="state" value="2" class="input">Occasion
+            
+                <input type="radio" name="state" value="1" class="radio" checked>
+                <label class ="text">Neuf</label>
+                <input type="radio" name="state" value="2" class="radio">
+                <label class="radio">Occasion</label>
 
             </fieldset>
 
-            <label class="text">quantite</label>
-            <input type="number" placeholder="Entrer la quantite" name="qte" class="input" min="1" max="100" required>
-
+            <label class="text">quantité</label>
+            <input type="number" placeholder="Entrer la quantité" name="qte" class="input" min="1" max="100" required>
+            
             <input type="submit" id="send" class="button" value="Ajouter">
 
 

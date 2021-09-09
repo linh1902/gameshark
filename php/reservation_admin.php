@@ -3,7 +3,7 @@ session_start();
 
 if(!$_SESSION) {
     // Si la session n'est pas ouverte ...
-    echo "probleme de session veuillez vous reconnecter";
+    echo "problème de session veuillez vous reconnecter";
     }
 
 else {
@@ -93,7 +93,8 @@ else {
                 <input  class="element_tableau" type="text" name="quantity" readonly value=<?php echo  $donnee['quantity'];?>>
             </td>
             <td> <input class="button"type="submit" name="ready" value="Prêt" onclick="return(confirm('Etes-vous sûr que la commande est prête ?'));"></td>
-            <td> <input class="button" type="submit" name="paid"  value="Payé / Annuler" onclick="return(confirm('Etes-vous sûr que la commande a été payer ?'));"></td>
+            <td> <input class="button" type="submit" name="paid"  value="Payé" onclick="return(confirm('Etes-vous sûr que la commande a été payéz ?'));"></td>
+            <td> <input class="button" type="submit" name="paid"  value="Annuler" onclick="return(confirm('Etes-vous sûr que la commande a été annulée ?'));"></td>
         </tr>
 
         </form>
@@ -150,7 +151,8 @@ else {
                             <input  class="element_tableau" type="text" name="quantity" readonly value=<?php echo  $donnee['quantity'];?>>
                         </td>
                         <td> <input class="button"type="submit" name="ready" value="Prêt" onclick="return(confirm('Etes-vous sûr que la commande est prête ?'));"></td>
-                        <td> <input class="button" type="submit" name="paid"  value="Payé / Annuler" onclick="return(confirm('Etes-vous sûr que la commande a été payer ?'));"></td>
+                        <td> <input class="button" type="submit" name="paid"  value="Payé" onclick="return(confirm('Etes-vous sûr que la commande a été payéz ?'));"></td>
+                        <td> <input class="button" type="submit" name="paid"  value="Annuler" onclick="return(confirm('Etes-vous sûr que la commande a été annulée ?'));"></td>
                     </tr>
 
                  </form>
